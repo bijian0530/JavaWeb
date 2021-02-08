@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -7,6 +7,50 @@
 <script type="text/javascript">
 	
 	$(function(){
+		//全选
+		$("#checkedAllBtn").click(function(){
+			$(":checkbox").prop("checked",true);
+		})
+		
+		//全不选
+		$("#checkedNoBtn").click(function(){
+			$(":checkbox").prop("checked",false);
+		})
+		
+		//反选
+		$("#checkedRevBtn").click(function(){
+			
+			$(":checkbox[name='items']").each(function(){
+				this.checked =! this.checked;
+			})
+			var checkedCount = $(":checkbox[name='items']:checked").length;
+			var allCount = $(":checkbox[name='items']").length;
+		/* 	if(checkedCount == allCount){
+				$("#checkedAllBox").prop("checked",true);
+			}else{
+				$("#checkedAllBox").prop("checked",false);
+			} */
+			$("#checkedAllBox").prop("checked",checkedCount == allCount);
+		});
+		
+		//提交
+		$("#sendBtn").click(function(){
+			$(":checkbox[name='items']:checked").each(function(){
+				alert(this.value);
+			})
+		});
+		
+		//全选、全不选
+		$("#checkedAllBox").click(function(){
+			$(":checkbox[name='items']").prop("checked",this.checked);
+			
+		})
+		$(":checked[name='items']").click(function(){
+			var checkedCount = $(":checkbox[name='items']:checked").length;
+			var allCount = $(":checkbox[name='items']").length;
+			$("#checkedAllBox").prop("checked",checkedCount == allCount);
+		});
+		
 		
 		
 	});

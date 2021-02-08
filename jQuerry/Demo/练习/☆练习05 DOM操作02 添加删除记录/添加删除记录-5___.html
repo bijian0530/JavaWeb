@@ -6,7 +6,39 @@
 <link rel="stylesheet" type="text/css" href="styleB/css.css" />
 <script type="text/javascript" src="../../script/jquery-1.7.2.js"></script>
 <script type="text/javascript">
+	$(function(){
+		
+		var deleteFun = function(){
+			var $trobj = $(this).parent().parent();
+			var name = $trobj.find("td:first").text();
+			if(confirm("你确认要删除"+ name +"?")){
+				$trobj.remove();
+			}
+			return false;
+		}
+		
+		
+		$("#addEmpButton").click(function(){
+			var name = $("#empName").value;
+			var email = $("#email").value;
+			var salary = $("#salary").value;
+		
+		var $trobj = $("<tr></tr>").append("<td>"+name+"</td>")
+					  .append("<td>"+email+"</td>")
+					  .append("<td>"+salary+"</td>")
+					  .append("<td><a href='#'>Delete</a></td>");	
+						  
 
+		//添加数据到表格
+		$trobj.appendTo($("#employeeTable"));
+		//给添加a的行标签绑定事件
+		$trobj.find("a").click(deleteFun);
+		});
+		
+		//给删除的a标签绑定删除事件
+		$("a").click(deleteFun);
+		
+	})
 	
 	
 </script>

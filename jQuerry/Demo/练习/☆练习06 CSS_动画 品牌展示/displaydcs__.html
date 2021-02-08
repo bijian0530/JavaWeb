@@ -73,7 +73,26 @@ a:hover {
 <script type="text/javascript" src="script/jquery-1.7.2.js"></script>
 <script type="text/javascript">
 	$(function() {
-
+		//基本状态
+		$("li:gt(5):not(:last)").hide();
+		
+		//给功能按钮绑定单击事件
+		$("a").click(function(){
+			$("li:gt(5):not(:last)").toggle();
+		//判断品牌是否看见
+		if($("li:gt(5):not(:last)").is(":hidden")){
+			$("span").text("显示全部品牌");
+			$("div div").removeClass();
+			$("div div").addClass("showmore");
+			$("li:contains('索尼')").removeClass("promoted");
+		}else{
+			$("span").text("显示精简品牌");
+			$("div div").removeClass();
+			$("div div").addClass("showless");
+			$("li:contains('索尼')").addClass("promoted");
+		}
+		return false;
+		})
 	});
 </script>
 </head>
