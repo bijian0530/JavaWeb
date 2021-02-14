@@ -8,10 +8,12 @@ import java.sql.Connection;
 public class JdbcUtilsTest {
     @Test
     public void testJdbcUtils(){
-        for (int i = 0; i < 1; i++) {
+        /*for (int i = 0; i < 10; i++) {
             Connection connection = JdbcUtils.getConnection();
             System.out.println(connection);
             JdbcUtils.close(connection);
-        }
+        }*/
+        Connection connection = JdbcUtils.getConnection();
+        System.out.println(connection);
     }
 }
